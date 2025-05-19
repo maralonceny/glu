@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.pongasoft</groupId>
+    <artifactId>glu</artifactId>
+    <version>5.6.1</version>
+    <packaging>pom</packaging>
+
+    <name>GLU</name>
+    <description>GLU Project</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <bootstrap.version>2.3.1</bootstrap.version>
+        <grails.version>2.5.0</grails.version>
+        <groovy.version>2.4.3</groovy.version>
+        <jetty.version>8.1.10.v20130312</jetty.version>
+        <utils.misc.version>2.1.0</utils.misc.version>
+        <utils.zookeeper.version>2.1.0</utils.zookeeper.version>
+        <restlet.version>2.1.2</restlet.version>
+        <sigar.version>1.6.4</sigar.version>
+        <slf4j.version>1.7.10</slf4j.version>
+        <sphinx.version>1.2b3</sphinx.version>
+    </properties>
+
+    <modules>
+        <module>agent/org.linkedin.glu.agent-api</module>
+        <module>agent/org.linkedin.glu.agent-cli-impl</module>
+        <module>agent/org.linkedin.glu.agent-cli</module>
+        <module>agent/org.linkedin.glu.agent-impl</module>
+        <module>agent/org.linkedin.glu.agent-rest-common</module>
+        <module>agent/org.linkedin.glu.agent-rest-client</module>
+        <module>agent/org.linkedin.glu.agent-rest-resources</module>
+        <module>agent/org.linkedin.glu.agent-server-impl</module>
+        <module>agent/org.linkedin.glu.agent-server-upgrade</module>
+        <module>agent/org.linkedin.glu.agent-server</module>
+        <module>agent/org.linkedin.glu.agent-tracker</module>
+        <module>commands/org.linkedin.glu.commands-impl</module>
+        <module>console/org.linkedin.glu.console-webapp</module>
+        <module>console/org.linkedin.glu.console-server</module>
+        <module>console/org.linkedin.glu.console-cli</module>
+        <module>docs/manual</module>
+        <module>orchestration/org.linkedin.glu.orchestration-engine</module>
+        <module>provisioner/org.linkedin.glu.provisioner-core</module>
+        <module>packaging/org.pongasoft.glu.packaging-setup-impl</module>
+        <module>packaging/org.linkedin.glu.packaging-setup</module>
+        <module>packaging/org.linkedin.glu.packaging-all</module>
+        <module>scripts/org.linkedin.glu.script-jetty</module>
+        <module>scripts/org.linkedin.glu.script-noop</module>
+        <module>scripts/org.linkedin.glu.script-hello-world</module>
+        <module>samples/org.linkedin.glu.samples.sample-webapp</module>
+        <module>utils/org.linkedin.glu.scripts-test-fwk</module>
+        <module>utils/org.linkedin.glu.utils.log4j-test-config</module>
+        <module>utils/org.linkedin.glu.utils</module>
+    </modules>
+
+    <dependencies>
+        <!-- Common dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <name>JCenter</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+</project> 

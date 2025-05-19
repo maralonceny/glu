@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.pongasoft</groupId>
+        <artifactId>docs</artifactId>
+        <version>5.6.1</version>
+    </parent>
+
+    <artifactId>manual</artifactId>
+    <packaging>pom</packaging>
+
+    <name>GLU Manual</name>
+    <description>GLU Manual Documentation Module</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>doc</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy todir="${project.build.directory}/sphinx">
+                                    <fileset dir="src/main/sphinx">
+                                        <exclude name="**/*.png"/>
+                                        <exclude name="**/*.gif"/>
+                                    </fileset>
+                                    <filterset>
+                                        <filter token="version" value="${project.version}"/>
+                                    </filterset>
+                                </copy>
+                                <copy todir="${project.build.directory}/sphinx">
+                                    <fileset dir="src/main/sphinx">
+                                        <include name="**/*.png"/>
+                                        <include name="**/*.gif"/>
+                                    </fileset>
+                                </copy>
+                                <copy file="${project.basedir}/../RELEASE.rst" todir="${project.build.directory}/sphinx/source"/>
+                                <exec executable="make" dir="${project.build.directory}/sphinx" failonerror="true">
+                                    <arg line="html"/>
+                                </exec>
+                                <delete dir="${project.build.directory}/sphinx/build/html/_sources"/>
+                                <delete file="${project.build.directory}/sphinx/build/html/searchindex.js"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project> 
